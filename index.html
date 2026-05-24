@@ -417,10 +417,11 @@
     <h1 class="hero-headline">News that's actually<br><em>about your street.</em></h1>
     <p class="hero-body">The Dandenong Local lands in your inbox every Wednesday morning. Council decisions in plain English. Safety updates without the sensationalism. Events, people, and the stories that make Greater Dandenong one of Australia's most remarkable places to live.</p>
 
-    <form class="subscribe-form" action="https://www.beehiiv.com/subscribe/PLACEHOLDER" method="post" target="_blank">
-      <input type="email" name="email" placeholder="your@email.com" required>
-      <button type="submit">Subscribe free</button>
-    </form>
+    <div class="subscribe-form">
+      <input type="email" id="dl-email" placeholder="your@email.com" autocomplete="email">
+      <button type="button" onclick="dlSubscribe()">Subscribe free</button>
+    </div>
+    <p id="dl-msg" style="min-height:18px;font-family:'DM Sans',sans-serif;font-size:13px;margin-top:8px;text-align:center;"></p>
     <p class="form-note">Free, weekly, no spam. Unsubscribe anytime.</p>
   </div>
 </section>
@@ -499,10 +500,11 @@
   <div class="hero-inner">
     <h2 class="hero-headline">Join your neighbours.<br><em>It's free.</em></h2>
     <p class="hero-body">Every Wednesday morning, straight to your inbox. No paywall, no ads, no nonsense.</p>
-    <form class="subscribe-form" action="https://www.beehiiv.com/subscribe/PLACEHOLDER" method="post" target="_blank">
-      <input type="email" name="email" placeholder="your@email.com" required>
-      <button type="submit">Subscribe free</button>
-    </form>
+    <div class="subscribe-form">
+      <input type="email" id="dl-email-bottom" placeholder="your@email.com" autocomplete="email">
+      <button type="button" onclick="dlSubscribe('dl-email-bottom','dl-msg-bottom')">Subscribe free</button>
+    </div>
+    <p id="dl-msg-bottom" style="min-height:18px;font-family:'DM Sans',sans-serif;font-size:13px;margin-top:8px;text-align:center;color:rgba(255,255,255,0.7);"></p>
     <p class="form-note">Tips &amp; story leads: tips@thedandenonglocal.au</p>
   </div>
 </section>
@@ -521,5 +523,41 @@
   </p>
 </footer>
 
+
+<script>
+  function dlSubscribe(inputId, msgId) {
+    inputId = inputId || 'dl-email';
+    msgId = msgId || 'dl-msg';
+    var email = document.getElementById(inputId).value.trim();
+    var msg = document.getElementById(msgId);
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      msg.style.color = '#c0392b';
+      msg.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    msg.style.color = '#c8a96e';
+    msg.textContent = 'Signing you up...';
+    fetch('https://dandenong-subscribe.tippitopher.workers.dev/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    }).then(function(r) { return r.json(); })
+    .then(function() {
+      msg.style.color = '#c8a96e';
+      msg.textContent = "You\'re in! See you Wednesday morning.";
+      document.getElementById(inputId).value = '';
+    }).catch(function() {
+      msg.style.color = '#c0392b';
+      msg.textContent = 'Something went wrong — try again or email tips@thedandenonglocal.au';
+    });
+  }
+
+  document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      if (document.activeElement.id === 'dl-email') dlSubscribe('dl-email','dl-msg');
+      if (document.activeElement.id === 'dl-email-bottom') dlSubscribe('dl-email-bottom','dl-msg-bottom');
+    }
+  });
+</script>
 </body>
 </html>
