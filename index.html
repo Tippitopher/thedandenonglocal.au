@@ -375,6 +375,139 @@
     line-height: 1.7;
   }
 
+  /* ── ISSUE PREVIEW ── */
+  .issue-preview {
+    background: var(--paper);
+    padding: 72px 32px;
+    border-top: 1px solid #ddd8cc;
+  }
+
+  .preview-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .preview-badge {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.2);
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+
+  .preview-main {
+    grid-column: 1 / -1;
+    background: var(--navy);
+    color: #fff;
+    padding: 32px 36px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .preview-main-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .preview-main h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .preview-main p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+  }
+
+  .preview-card {
+    background: #fff;
+    border-top: 3px solid var(--gold);
+    padding: 24px 28px;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .preview-card-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .preview-card h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .preview-card p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .preview-read-link {
+    display: inline-block;
+    margin-top: 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--navy);
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .preview-read-link:hover { background: var(--red); }
+
+  @media (max-width: 600px) {
+    .preview-grid { grid-template-columns: 1fr; }
+    .preview-main { padding: 24px 20px; }
+    .preview-card { padding: 20px; }
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -423,7 +556,54 @@
   <div class="hero-inner">
     <p class="hero-kicker">Greater Dandenong · Noble Park · Springvale · Keysborough &amp; more</p>
     <h1 class="hero-headline">News that's actually<br><em>about your street.</em></h1>
-    <p class="hero-body">The Dandenong Local lands in your inbox every Wednesday morning. Council decisions in plain English. Safety updates without the sensationalism. Events, people, and the stories that make Greater Dandenong one of Australia's most remarkable places to live.</p>
+    <p class="hero-body">Issue #1 is out this Wednesday, 27 May. Council decisions in plain English. Safety updates without the sensationalism. Events, people, and the stories that make Greater Dandenong one of Australia's most remarkable places to live — every Wednesday morning, free.</p>
+  </div>
+</section>
+
+<!-- ISSUE #1 PREVIEW -->
+<section class="issue-preview">
+  <div class="preview-inner">
+    <span class="preview-badge">📰 Issue #1 — Out Wednesday 27 May</span>
+    <p class="section-label">From the newsroom</p>
+    <h2 class="section-title">Stories you won't read <em style="font-style:italic;color:var(--red);">anywhere else</em></h2>
+
+    <div class="preview-grid">
+
+      <div class="preview-main">
+        <div class="preview-main-tag">🏛 Budget &amp; Council</div>
+        <h3>Greater Dandenong's 2026–27 Budget: $105 Million, a $53 Rate Rise, and a Waste Charge That Blew Out</h3>
+        <p>Council has handed down its draft budget and residents have until 11 June to have their say. We break down what's actually being spent, who's paying more, and the glass bin decision council is already reconsidering.</p>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-card-tag">🔎 Suburb Spotlight</div>
+        <h4>Dandenong CBD: Market Precinct, a $305M Hospital, and the Question of What Comes Next</h4>
+        <p>The CBD is changing fast. We go deep on the redevelopment plans, the market precinct proposal, and what locals actually think about it.</p>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-card-tag">⚡ Local News</div>
+        <h4>ASU Workers Strike — The Largest Local Government Strike in Victoria</h4>
+        <p>Council workers walked off the job this week in a dispute that's still unresolved. Here's what it means for services and what happens next.</p>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-card-tag">🌏 Only in Dandenong</div>
+        <h4>A Four-Course Meal at Dandenong Market for Under Twenty Dollars</h4>
+        <p>It started as a quick lunch. It turned into something worth writing about. Topher's tour of the market food stalls — and why you should do the same.</p>
+      </div>
+
+      <div class="preview-card">
+        <div class="preview-card-tag">🗣 Resident Voice</div>
+        <h4>"We've been waiting years for Oasis — and now they're saying 2028"</h4>
+        <p>Tony, Noble Park, on the delayed Oasis Aquatics Centre and what the community has lost in the meantime.</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;">
+      <a href="https://thedandenonglocal.beehiiv.com" target="_blank" class="preview-read-link">Read Issue #1 →</a>
+    </div>
   </div>
 </section>
 
